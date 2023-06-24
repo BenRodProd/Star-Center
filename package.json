@@ -1,0 +1,25 @@
+{
+  "name": "solarsystem",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.77.0",
+    "@react-three/fiber": "^8.13.3",
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.6",
+    "next": "13.4.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scroll-into-view": "^1.12.1",
+    "react-use-scroll-position": "^2.0.0",
+    "styled-components": "^5.3.11",
+    "swr": "^2.1.5",
+    "three": "^0.153.0"
+  }
+}
