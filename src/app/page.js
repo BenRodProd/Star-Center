@@ -130,8 +130,10 @@ backdrop-filter: blur( 7.5px );
 const MoonLandingWrapper = styled.div`
 display:flex;
 
-width:100%;
-height:100%;
+justify-content: center;
+
+width:30vw;
+
 z-index: 10;
 `
 const AstronautMover = keyframes`
