@@ -7,8 +7,8 @@ export const MapContainer = styled.div`
   overflow: hidden;
   height: auto;
   aspect-ratio: 2058/1036;
-  width:30vw;
-  min-width:280px;
+  width:50vw;
+  min-width:250px;
   
 
 `;

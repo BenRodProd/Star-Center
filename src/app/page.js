@@ -78,7 +78,7 @@ width:80%;
 height:100%;
 margin:2rem;
 padding:1rem;
-margin-bottom: 4rem;
+margin-bottom: 2rem;
 `
 const NasaCard = styled.div`
 display:flex;
@@ -101,7 +101,7 @@ z-index:1;
 width:80%;
 margin:2rem;
 padding:1rem;
-margin-bottom: 4rem;
+margin-bottom: 2rem;
 
 
 `
@@ -496,9 +496,9 @@ export default function Home() {
   
   console.log(scrollPercent);
   
-  if (scrollPercent <= 5) {
+  if (scrollPercent <= 4) {
     setCardInFocus('1');
-  } else if (scrollPercent > 5 && scrollPercent <= 12) {
+  } else if (scrollPercent > 4 && scrollPercent <= 12) {
     setCardInFocus('2');
   } else if (scrollPercent > 12 && scrollPercent <= 24) {
     setCardInFocus('3');
