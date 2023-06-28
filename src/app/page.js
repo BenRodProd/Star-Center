@@ -439,7 +439,7 @@ font-family: 'astro', sans-serif;
 
 
 export default function Home() {
-  const [cardInFocus, setCardInFocus] = useState('0')
+  const [cardInFocus, setCardInFocus] = useState('1')
   const [chosenLanguage, setChosenLanguage] = useState('english')
   const [scrollDirection, setScrollDirection] = useState('down')
   const [lockCard, setLockCard] = useState(false)
@@ -491,39 +491,39 @@ export default function Home() {
   //  }
   
 const maxScrollY = document.documentElement.scrollHeight;
-const scrollPercent = (scrollY / maxScrollY) * 100
+const minScrollHeight = window.innerHeight
+const scrollPercent = ((scrollY + window.innerHeight) / maxScrollY) * 100;
 
 
-
-    if (scrollPercent < 4) {
+    if (scrollPercent <= 14) {
    
       setCardInFocus('1');
  
-    } else if (scrollPercent > 4 && scrollPercent < 11) {
+    } else if (scrollPercent > 14 && scrollPercent < 20) {
    
       setCardInFocus('2');
  
       
-    } else if (scrollPercent > 11 && scrollPercent < 20) {
+    } else if (scrollPercent > 20 && scrollPercent < 30) {
     
       setCardInFocus('3');
 
-    } else if (scrollPercent > 20 && scrollPercent < 31) {
+    } else if (scrollPercent > 30 && scrollPercent < 47) {
     
     
       setCardInFocus('4');
   
-    } else if (scrollPercent > 31 && scrollPercent < 55)  {
+    } else if (scrollPercent > 47 && scrollPercent < 63)  {
     
     
       setCardInFocus('5');
   
-    }else if (scrollPercent > 55 && scrollPercent < 76)  {
+    }else if (scrollPercent > 63 && scrollPercent < 86)  {
     
     
       setCardInFocus('6');
   
-    }else if (scrollPercent > 76 && scrollPercent < 100)  {
+    }else if (scrollPercent > 86 && scrollPercent < 100)  {
     
     
       setCardInFocus('7');
@@ -545,60 +545,20 @@ const scrollPercent = (scrollY / maxScrollY) * 100
     }, 100);
  },[])
 
-function scrolling(number) {
-const maxScrollY = document.documentElement.scrollHeight;
-const scrollPercent = (scrollY / maxScrollY) * 100
+ function scrolling(number) {
+  const cards = document.querySelectorAll('.card');
+  const targetCard = cards[number - 1];
+  const cardOffsetTop = targetCard.offsetTop;
+  const cardHeaderHeight = targetCard.querySelector('.card-header').offsetHeight;
+  const scrollPosition = cardOffsetTop - cardHeaderHeight;
 
-  if (number === 1) {
-    window.scrollTo({
-      top: 0,
-      
-      behavior: "smooth",
-    })
-
-
-  
-
-  } else if (number === 2) {
-    window.scrollTo({
-      top: maxScrollY*0.05,
-      
-      behavior: "smooth",
-    })
-} else if (number === 3) {
-      window.scrollTo({
-        top: maxScrollY*0.12,
-        
-        behavior: "smooth",
-      })
-   }else if (number === 4) {
-        window.scrollTo({
-          top: maxScrollY*0.29,
-          
-          behavior: "smooth",
-        })
-    }else if (number === 5) {
-          
-            window.scrollTo({
-              top: maxScrollY*0.37,
-              
-              behavior: "smooth",
-            })
-          } else if (number === 6) {
-          
-              window.scrollTo({
-                top: maxScrollY*0.60,
-                
-                behavior: "smooth",
-              })
-            } else if (number === 7) {
-                 window.scrollTo({
-                  top: maxScrollY*0.79,
-                  
-                  behavior: "smooth",
-                })
-              }
+  window.scrollTo({
+    top: scrollPosition-50,
+    behavior: 'smooth',
+  });
 }
+
+
   
 
 
@@ -638,17 +598,17 @@ if (isLoading) {
  <AstronautWrapper>
  <Astronaut />
  </AstronautWrapper>
- <Card1 id="universe" scrollDirection={scrollDirection} lockCard={lockCard} cardInFocus={cardInFocus} ><Header>{chosenLanguage==='english' ? 'THE UNIVERSE' : 'DAS UNIVERSUM'}</Header>
+ <Card1 className="card" id="universe" scrollDirection={scrollDirection} lockCard={lockCard} cardInFocus={cardInFocus} ><Header className="card-header">{chosenLanguage==='english' ? 'THE UNIVERSE' : 'DAS UNIVERSUM'}</Header>
   <Para>{chosenLanguage==='english' ? UniverseText : UniversumText}</Para></Card1>
-  <Card2 id='earth' scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}><Header>{chosenLanguage==='english' ? 'THE EARTH' : 'DIE ERDE'}</Header>
+  <Card2 className="card" id='earth' scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}><Header className="card-header">{chosenLanguage==='english' ? 'THE EARTH' : 'DIE ERDE'}</Header>
   <Para>{chosenLanguage==='english' ? EarthText: ErdeText}</Para></Card2>
     <EarthWrapper isMobileSize={isMobileSize}>
     <EarthComponent/>
     </EarthWrapper>
     <div id="iss"></div>
-  <Card3 id='iss' scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}><Header>{chosenLanguage==='english' ? 'THE ISS' : 'DIE ISS'}</Header>
+  <Card3 className="card" id='iss' scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}><Header className="card-header">{chosenLanguage==='english' ? 'THE ISS' : 'DIE ISS'}</Header>
   <Para>{chosenLanguage==='english' ? ISSText : GerISSText}</Para></Card3>
-    <Card4 scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
+    <Card4  scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
       <Header>{chosenLanguage==='english' ? 'CURRENT POSITION OF THE ISS' : 'LIVE TRACKER DER ISS'}</Header>
       <ISSTracker />
     </Card4>
@@ -656,30 +616,30 @@ if (isLoading) {
       <IssWrapper>
         <Iss />
         </IssWrapper>
-      <NasaCard isMobile={isMobileSize} id="NasaPOTD" >
-          <Header>NASA Picture of the Day</Header>
+      <NasaCard className="card" isMobile={isMobileSize} id="NasaPOTD" >
+          <Header className="card-header">NASA Picture of the Day</Header>
      <NasaSlideShow/>
      </NasaCard>
-     <Card5 scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
+     <Card5 className="card" scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
     
-    <Header>{chosenLanguage==='english' ? 'OUR MOON' : 'UNSER MOND'}</Header>
+    <Header className="card-header">{chosenLanguage==='english' ? 'OUR MOON' : 'UNSER MOND'}</Header>
   <Para>{chosenLanguage==='english' ? MoonText : MondText}</Para>
   </Card5>
-  <Card>
+  <Card >
     <MoonLandingWrapper>
     <MoonLanding />
     </MoonLandingWrapper>
   </Card>
-  <Card6 scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
+  <Card6 className="card" scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
     
-    <Header>{chosenLanguage==='english' ? 'OUR SUN' : 'UNSERE SONNE'}</Header>
+    <Header className="card-header">{chosenLanguage==='english' ? 'OUR SUN' : 'UNSERE SONNE'}</Header>
   <Para>{chosenLanguage === 'english' ? SunText : SonneText}</Para>
   </Card6>
   <MarsWrapper>
     <Mars />
     </MarsWrapper>
-  <Card7 scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
-    <Header>Mars</Header>
+  <Card7 className="card" scrollDirection={scrollDirection} cardInFocus={cardInFocus} lockCard={lockCard}>
+    <Header className="card-header">Mars</Header>
   <Para>{chosenLanguage==='english' ? MarsText : GerMarsText}</Para>
   </Card7>
   <Card>
