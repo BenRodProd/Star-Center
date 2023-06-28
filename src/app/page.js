@@ -490,45 +490,28 @@ export default function Home() {
   //    maxScrollY = 4400;
   //  }
   
-const maxScrollY = document.documentElement.scrollHeight;
-const minScrollHeight = window.innerHeight
-const scrollPercent = ((scrollY + window.innerHeight) / maxScrollY) * 100;
-
-
-    if (scrollPercent <= 14) {
-   
-      setCardInFocus('1');
- 
-    } else if (scrollPercent > 14 && scrollPercent < 20) {
-   
-      setCardInFocus('2');
- 
-      
-    } else if (scrollPercent > 20 && scrollPercent < 30) {
-    
-      setCardInFocus('3');
-
-    } else if (scrollPercent > 30 && scrollPercent < 47) {
-    
-    
-      setCardInFocus('4');
+  const scrollY = window.scrollY || window.pageYOffset;
+  const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollY / maxScrollY) * 100;
   
-    } else if (scrollPercent > 47 && scrollPercent < 63)  {
-    
-    
-      setCardInFocus('5');
+  console.log(scrollPercent);
   
-    }else if (scrollPercent > 63 && scrollPercent < 86)  {
-    
-    
-      setCardInFocus('6');
+  if (scrollPercent <= 5) {
+    setCardInFocus('1');
+  } else if (scrollPercent > 5 && scrollPercent <= 12) {
+    setCardInFocus('2');
+  } else if (scrollPercent > 12 && scrollPercent <= 24) {
+    setCardInFocus('3');
+  } else if (scrollPercent > 24 && scrollPercent <= 40) {
+    setCardInFocus('4');
+  } else if (scrollPercent > 40 && scrollPercent <= 60) {
+    setCardInFocus('5');
+  } else if (scrollPercent > 60 && scrollPercent <= 83) {
+    setCardInFocus('6');
+  } else if (scrollPercent > 83 && scrollPercent <= 100) {
+    setCardInFocus('7');
+  }
   
-    }else if (scrollPercent > 86 && scrollPercent < 100)  {
-    
-    
-      setCardInFocus('7');
-  
-    }
   }, [scrollY, isMobileSize]);
   useEffect(() => {
     setLockCard(false)
