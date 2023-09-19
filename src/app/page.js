@@ -64,7 +64,7 @@ justify-content:center;
 
     border: 1px solid white;
 color:white;
-text-align: center;
+text-align: left;
 text-shadow: 0 0 20px white;
   box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
   background: rgba( 255, 255, 255, 0.05 );
@@ -400,6 +400,7 @@ padding:0;
 animation: ${MarsAni} 240s ease-in-out infinite;
 aspect-ratio: 1 / 1;
 overflow:hidden;
+
 `
 const Navigation = styled.div`
 display:flex;

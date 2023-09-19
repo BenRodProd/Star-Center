@@ -6,6 +6,7 @@ import styled from "styled-components";
 const Para = styled.p`
   font-family: 'time', sans-serif;
   z-index: 1;
+  text-align: center;
 `;
 const Container = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const Container = styled.div`
 `;
 
 const Empty = styled.div`
-  width: 70vw;
+  width: 100%;
   height: 400px;
 `;
 
@@ -25,7 +26,8 @@ const ImageContainer = styled.div`
 position:relative;
   opacity: ${({ visible }) => (visible ? 1 : 0)};
   transition: opacity 2s ease;
- width:50vw;
+ width:40vw;
+ max-width: 900px;
  height:400px;
  
   
